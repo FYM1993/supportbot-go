@@ -47,3 +47,6 @@ web/.next/
 
 # 配置文件中的敏感信息（如果有）
 # configs/*_local.yaml
+
+# 个人会话记录
+会话记录.md
