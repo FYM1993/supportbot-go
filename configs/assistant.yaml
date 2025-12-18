@@ -1,0 +1,17 @@
+server:
+  port: 11002
+  name: assistant
+
+dashscope:
+  apiKey: "sk-1a12c5d68c4144c0bca03e13b3cab08b"
+  model: "qwen-turbo"
+
+services:
+  imDemo: http://localhost:11005
+  productService: http://localhost:11006
+  tradeService: http://localhost:11007
+  workOrderService: http://localhost:11008
+
+log:
+  level: info
+

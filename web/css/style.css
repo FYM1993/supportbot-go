@@ -1,0 +1,682 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+/* 顶部导航栏 */
+.header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 8px 0;
+    font-size: 12px;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.header-left .location {
+    color: #666;
+}
+
+.header-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-item {
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.nav-item:hover {
+    color: #e74c3c;
+}
+
+.login-status {
+    color: #666;
+}
+
+.login-btn {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+.cart-count {
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+/* 搜索区域 */
+.search-section {
+    background-color: white;
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.search-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 0 20px;
+}
+
+.logo h1 {
+    color: #e74c3c;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.search-box {
+    flex: 1;
+    display: flex;
+    max-width: 500px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid #e74c3c;
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-btn {
+    padding: 12px 24px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.search-btn:hover {
+    background-color: #c0392b;
+}
+
+.cart-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    color: #666;
+    cursor: pointer;
+}
+
+.cart-icon i {
+    font-size: 24px;
+    color: #e74c3c;
+}
+
+/* 主导航 */
+.main-nav {
+    background-color: #8b4513;
+    color: white;
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.category-btn {
+    background-color: #a0522d;
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    margin-left: 40px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: #a0522d;
+}
+
+/* 热门分类 */
+.hot-categories {
+    background-color: white;
+    padding: 15px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.category-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.category-tag {
+    background-color: #f8f9fa;
+    color: #666;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.category-tag:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* 主要内容区域 */
+.main-content {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 20px;
+}
+
+/* 左侧分类 */
+.sidebar {
+    width: 200px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.category-item {
+    padding: 15px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s;
+}
+
+.category-item:hover {
+    background-color: #f8f9fa;
+}
+
+.category-item i {
+    color: #e74c3c;
+    width: 20px;
+}
+
+/* 右侧商品展示 */
+.products-section {
+    flex: 1;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e74c3c;
+}
+
+.section-header h2 {
+    color: #333;
+    font-size: 20px;
+}
+
+.more-link {
+    color: #e74c3c;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.product-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 15px;
+}
+
+.product-title {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #333;
+    line-height: 1.4;
+}
+
+.product-desc {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #e74c3c;
+    margin-bottom: 10px;
+}
+
+.add-to-cart-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #c0392b;
+}
+
+/* 热销商品区域 */
+.hot-products {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* 客服聊天按钮 */
+.customer-service-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #e74c3c;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+    transition: all 0.3s;
+    z-index: 1000;
+}
+
+.customer-service-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(231, 76, 60, 0.4);
+}
+
+.customer-service-btn i {
+    font-size: 18px;
+}
+
+/* 登录弹窗 */
+.login-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2000;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 0;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+    background-color: #e74c3c;
+    color: white;
+    padding: 20px;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #e74c3c;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #c0392b;
+}
+
+/* 客服聊天窗口 */
+.chat-window {
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 350px;
+    height: 500px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    z-index: 1500;
+    flex-direction: column;
+}
+
+.chat-header {
+    background-color: #8b4513;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+}
+
+.message {
+    margin-bottom: 15px;
+    display: flex;
+}
+
+.message.user-message {
+    justify-content: flex-end;
+}
+
+.message.ai-message {
+    justify-content: flex-start;
+}
+
+.message-content {
+    max-width: 80%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.user-message .message-content {
+    background-color: #e74c3c;
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.ai-message .message-content {
+    background-color: white;
+    color: #333;
+    border: 1px solid #e9ecef;
+    border-bottom-left-radius: 4px;
+}
+
+.chat-input {
+    padding: 20px;
+    border-top: 1px solid #e9ecef;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+}
+
+.chat-input input:focus {
+    border-color: #e74c3c;
+}
+
+.attach-btn {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.attach-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.send-btn {
+    padding: 12px 20px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.send-btn:hover {
+    background-color: #c0392b;
+}
+
+/* 消息状态样式 */
+.message-status {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.loading-spinner {
+    font-size: 16px;
+    animation: spin 1s linear infinite;
+    color: #666;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 重发按钮样式 */
+.retry-button-container {
+    margin-bottom: 5px;
+}
+
+.retry-button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.retry-button:hover {
+    background-color: #ff5252;
+}
+
+.retry-button:active {
+    background-color: #e53935;
+}
+
+/* 失败消息的特殊样式 */
+.user-message.failed {
+    border-left: 3px solid #ff6b6b;
+    background-color: rgba(255, 107, 107, 0.1);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .header-content,
+    .search-content,
+    .nav-content,
+    .category-content,
+    .main-content,
+    .hot-products {
+        padding: 0 15px;
+    }
+    
+    .content-wrapper {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    
+    .chat-window {
+        width: 90%;
+        right: 5%;
+        bottom: 80px;
+    }
+    
+    .customer-service-btn {
+        right: 20px;
+        bottom: 20px;
+    }
+}

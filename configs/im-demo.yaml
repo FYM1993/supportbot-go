@@ -1,0 +1,10 @@
+server:
+  port: 11005
+  name: im-demo
+
+services:
+  questionClassifier: http://localhost:11001
+
+log:
+  level: info
+

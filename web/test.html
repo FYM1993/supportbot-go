@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STOMP连接测试</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .connected { background-color: #d4edda; color: #155724; }
+        .disconnected { background-color: #f8d7da; color: #721c24; }
+        .log { background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 10px; margin: 10px 0; height: 300px; overflow-y: auto; }
+        input, button { margin: 5px; padding: 8px; }
+    </style>
+</head>
+<body>
+    <h1>STOMP WebSocket连接测试</h1>
+    
+    <div id="status" class="status disconnected">未连接</div>
+    
+    <div>
+        <input type="text" id="username" placeholder="用户名" value="testuser">
+        <button onclick="connect()">连接</button>
+        <button onclick="disconnect()">断开</button>
+    </div>
+    
+    <div>
+        <input type="text" id="message" placeholder="消息内容" value="Hello STOMP!">
+        <button onclick="sendMessage()">发送消息</button>
+    </div>
+    
+    <div class="log" id="log"></div>
+    
+    <!-- STOMP和SockJS库 -->
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+    
+    <!-- 配置文件 -->
+    <script src="js/config.js"></script>
+    
+    <script>
+        let stompClient = null;
+        let connected = false;
+        
+        function log(message) {
+            const logDiv = document.getElementById('log');
+            const timestamp = new Date().toLocaleTimeString();
+            logDiv.innerHTML += `[${timestamp}] ${message}<br>`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+        
+        function updateStatus() {
+            const statusDiv = document.getElementById('status');
+            if (connected) {
+                statusDiv.textContent = '已连接';
+                statusDiv.className = 'status connected';
+            } else {
+                statusDiv.textContent = '未连接';
+                statusDiv.className = 'status disconnected';
+            }
+        }
+        
+        function connect() {
+            const username = document.getElementById('username').value.trim();
+            if (!username) {
+                alert('请输入用户名');
+                return;
+            }
+            
+            log(`正在连接到STOMP服务器...`);
+            
+            // 创建SockJS连接
+            const socket = new SockJS(window.getWebSocketUrl());
+            stompClient = Stomp.over(socket);
+            
+            // 禁用STOMP调试日志
+            stompClient.debug = null;
+            
+            // 连接
+            stompClient.connect({}, 
+                function (frame) {
+                    connected = true;
+                    log(`STOMP连接成功: ${frame}`);
+                    updateStatus();
+                    
+                    // 订阅用户消息队列
+                    stompClient.subscribe('/user/queue/messages', function (message) {
+                        log(`收到消息: ${message.body}`);
+                    });
+                    
+                    log('已订阅用户消息队列');
+                },
+                function (error) {
+                    connected = false;
+                    log(`STOMP连接失败: ${error}`);
+                    updateStatus();
+                }
+            );
+        }
+        
+        function disconnect() {
+            if (stompClient) {
+                stompClient.disconnect();
+                connected = false;
+                log('已断开连接');
+                updateStatus();
+            }
+        }
+        
+        function sendMessage() {
+            if (!connected) {
+                alert('请先连接');
+                return;
+            }
+            
+            const content = document.getElementById('message').value.trim();
+            if (!content) {
+                alert('请输入消息内容');
+                return;
+            }
+            
+            const message = {
+                type: 'CHAT',
+                content: content,
+                sender: document.getElementById('username').value.trim(),
+                timestamp: Date.now()
+            };
+            
+            try {
+                stompClient.send('/app/chat', {}, JSON.stringify(message));
+                log(`发送消息: ${content}`);
+            } catch (error) {
+                log(`发送消息失败: ${error}`);
+            }
+        }
+        
+        // 页面加载时更新状态
+        updateStatus();
+    </script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小店长 - 智能电商平台</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <span class="location">中国大陆版·北京</span>
+            </div>
+            <div class="header-right">
+                <span class="login-status" id="loginStatus">您好,请登录</span>
+                <button class="login-btn" id="loginBtn">免费注册</button>
+                <span class="nav-item">AI助手</span>
+                <span class="nav-item">我的订单</span>
+                <span class="nav-item">我的购物车 <span class="cart-count">1</span></span>
+                <span class="nav-item">商家服务</span>
+                <span class="nav-item">网站导航</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 搜索区域 -->
+    <div class="search-section">
+        <div class="search-content">
+            <div class="logo">
+                <h1>小店长</h1>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="小白熊恒温调奶器" class="search-input">
+                <button class="search-btn">搜索</button>
+            </div>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span>购物车</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主导航 -->
+    <nav class="main-nav">
+        <div class="nav-content">
+            <div class="category-btn">
+                <i class="fas fa-bars"></i>
+                全部商品分类
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-link">首页</a>
+                <a href="#" class="nav-link">热销商品</a>
+                <a href="#" class="nav-link">新品上市</a>
+                <a href="#" class="nav-link">优惠活动</a>
+                <a href="#" class="nav-link">品牌专区</a>
+                <a href="#" class="nav-link">客服中心</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 热门分类 -->
+    <div class="hot-categories">
+        <div class="category-content">
+            <span class="category-tag">出口转内销又好又便宜</span>
+            <span class="category-tag">得力办公约100件好物</span>
+            <span class="category-tag">户外鞋服馆</span>
+            <span class="category-tag">风扇空调</span>
+            <span class="category-tag">冲锋衣</span>
+            <span class="category-tag">黄金项链</span>
+            <span class="category-tag">小狗KP</span>
+            <span class="category-tag">跑步机</span>
+            <span class="category-tag">智能手表</span>
+        </div>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+        <div class="content-wrapper">
+            <!-- 左侧分类 -->
+            <aside class="sidebar">
+                <div class="category-list">
+                    <div class="category-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>手机/运营商/数码</span>
+                    </div>
+                    <div class="category-item">
+                        <i class="fas fa-laptop"></i>
+                        <span>电脑/办公</span>
+                    </div>
+                    <div class="category-item">
+                        <i class="fas fa-home"></i>
+                        <span>家居/家具/家装/厨具</span>
+                    </div>
+                    <div class="category-item">
+                        <i class="fas fa-tshirt"></i>
+                        <span>男装/女装/童装/内衣</span>
+                    </div>
+                    <div class="category-item">
+                        <i class="fas fa-spa"></i>
+                        <span>美妆/个护清洁/宠物</span>
+                    </div>
+                    <div class="category-item">
+                        <i class="fas fa-shoe-prints"></i>
+                        <span>女鞋/箱包/钟表/珠宝</span>
+                    </div>
+                    <div class="category-item">
+                        <i class="fas fa-running"></i>
+                        <span>男鞋/运动/户外</span>
+                    </div>
+                    <div class="category-item">
+                        <i class="fas fa-car"></i>
+                        <span>汽车/汽车用品</span>
+                    </div>
+                    <div class="category-item">
+                        <i class="fas fa-baby"></i>
+                        <span>母婴/玩具乐器</span>
+                    </div>
+                    <div class="category-item">
+                        <i class="fas fa-utensils"></i>
+                        <span>食品/酒类/生鲜/特产</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- 右侧商品展示 -->
+            <section class="products-section">
+                <div class="section-header">
+                    <h2>为您推荐</h2>
+                    <a href="#" class="more-link">更多好货 ></a>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/200x200/ff6b6b/ffffff?text=PowerBank" alt="小米充电宝">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Xiaomi Power Bank 3 High-End Edition 20000mAh</h3>
+                            <p class="product-desc">双向18W快充,三口输出,兼容iPhone、iPad及安卓设备</p>
+                            <div class="product-price">¥159</div>
+                            <button class="add-to-cart-btn">加入购物车</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/200x200/ff9ff3/ffffff?text=vivo" alt="vivo手机">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">vivo X70 Pro+ 5G Phone</h3>
+                            <p class="product-desc">骁龙888+芯片,120Hz曲面屏,55W闪充</p>
+                            <div class="product-price">¥5499</div>
+                            <button class="add-to-cart-btn">加入购物车</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/200x200/54a0ff/ffffff?text=AirPods" alt="AirPods Pro">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Apple AirPods Pro</h3>
+                            <p class="product-desc">主动降噪,空间音频,入耳检测,IPX4防水</p>
+                            <div class="product-price">¥1999</div>
+                            <button class="add-to-cart-btn">加入购物车</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/200x200/5f27cd/ffffff?text=Lenovo" alt="联想笔记本">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Lenovo Xiaoxin Pro 14</h3>
+                            <p class="product-desc">11代酷睿i7,16GB内存,512GB固态硬盘</p>
+                            <div class="product-price">¥6299</div>
+                            <button class="add-to-cart-btn">加入购物车</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 热销商品区域 -->
+    <section class="hot-products">
+        <div class="section-header">
+            <h2>热销商品</h2>
+            <a href="#" class="more-link">更多热卖 ></a>
+        </div>
+        <div class="products-grid">
+            <!-- 热销商品卡片 -->
+        </div>
+    </section>
+
+    <!-- 客服聊天按钮 -->
+    <div class="customer-service-btn" id="customerServiceBtn">
+        <i class="fas fa-comments"></i>
+        <span>联系客服</span>
+    </div>
+
+    <!-- 登录弹窗 -->
+    <div class="login-modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>用户登录</h3>
+                <button class="close-btn" id="closeLoginModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">用户名</label>
+                        <input type="text" id="username" name="username" placeholder="请输入您的用户名" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密码（可选）</label>
+                        <input type="password" id="password" name="password" placeholder="密码可选">
+                    </div>
+                    <button type="submit" class="submit-btn">登录</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 客服聊天窗口 -->
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <span>在线客服</span>
+            <button class="close-btn" id="closeChatWindow">&times;</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message ai-message">
+                <div class="message-content">
+                    您好! 我是智能客服助手, 有什么可以帮您的吗? 😊
+                </div>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="请输入您想咨询的问题...">
+            <button class="attach-btn" id="attachBtn">
+                <i class="fas fa-image"></i>
+            </button>
+            <button class="send-btn" id="sendBtn">发送</button>
+        </div>
+        <div class="chat-debug" style="padding: 10px; border-top: 1px solid #eee; background: #f9f9f9;">
+            <button onclick="window.chatManager.clearUserChatHistory(window.chatManager.getCurrentUser())" style="margin-right: 10px; padding: 5px 10px; font-size: 12px;">清除当前用户记录</button>
+            <button onclick="window.chatManager.clearAllChatHistories()" style="margin-right: 10px; padding: 5px 10px; font-size: 12px;">清除所有记录</button>
+            <button onclick="console.log('localStorage:', localStorage.getItem('userChatHistories')); console.log('userChatHistories:', window.chatManager.userChatHistories);" style="padding: 5px 10px; font-size: 12px;">调试信息</button>
+        </div>
+    </div>
+
+    <!-- 配置文件 -->
+    <script src="js/config.js"></script>
+    
+    <!-- 原生 WebSocket 管理 -->
+    <script src="js/websocket.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
