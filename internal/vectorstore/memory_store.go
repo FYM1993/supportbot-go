@@ -19,9 +19,9 @@ type Document struct {
 
 // SearchResult 搜索结果
 type SearchResult struct {
-	Document   Document // 文档
-	Score      float64  // 相似度得分（0-1，越高越相似）
-	Distance   float64  // 向量距离
+	Document Document // 文档
+	Score    float64  // 相似度得分（0-1，越高越相似）
+	Distance float64  // 向量距离
 }
 
 // MemoryVectorStore 内存向量存储（简化版）
@@ -182,4 +182,3 @@ func getTopScore(results []SearchResult) float64 {
 	}
 	return results[0].Score
 }
-

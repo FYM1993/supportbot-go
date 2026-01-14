@@ -45,21 +45,21 @@ func main() {
 
 	// 初始化 LLM 客户端
 	llmClient := client.NewDashScopeClient(cfg.DashScope.APIKey, cfg.DashScope.Model, zapLogger)
-	
+
 	// 初始化 Embedding 客户端
 	embeddingClient := client.NewEmbeddingClient(cfg.DashScope.APIKey, zapLogger)
-	
+
 	// 初始化向量存储
 	vectorStore := vectorstore.NewMemoryVectorStore(zapLogger)
-	
+
 	// 初始化知识库服务
 	knowledgeService := service.NewKnowledgeService(embeddingClient, vectorStore, zapLogger)
-	
+
 	// 加载默认知识库
 	if err := knowledgeService.InitDefaultKnowledge(); err != nil {
 		log.Fatalf("初始化知识库失败: %v", err)
 	}
-	
+
 	imDemoURL := cfg.Services.IMDemo
 
 	r := gin.Default()
@@ -133,7 +133,7 @@ func main() {
 	})
 
 	addr := fmt.Sprintf(":%d", cfg.Server.Port)
-	zapLogger.Info("knowledge-rag 服务启动成功", 
+	zapLogger.Info("knowledge-rag 服务启动成功",
 		zap.Int("port", cfg.Server.Port),
 		zap.Int("knowledge_count", vectorStore.Count()))
 
@@ -157,7 +157,7 @@ func processRAG(req RAGRequest, llmClient *client.DashScopeClient,
 
 	// 2. 构建上下文
 	knowledgeContext := knowledgeService.BuildContext(results)
-	logger.Info("检索完成", 
+	logger.Info("检索完成",
 		zap.Int("results", len(results)),
 		zap.Float64("top_score", getTopScore(results)))
 

@@ -150,11 +150,11 @@ func RegisterBuiltinTools(registry *Registry, logger *zap.Logger) error {
 
 			// 模拟物流信息
 			tracking := map[string]interface{}{
-				"order_id":      orderID,
-				"tracking_no":   "SF1234567890",
-				"carrier":       "顺丰速运",
-				"current_location": "北京分拨中心",
-				"status":        "运输中",
+				"order_id":           orderID,
+				"tracking_no":        "SF1234567890",
+				"carrier":            "顺丰速运",
+				"current_location":   "北京分拨中心",
+				"status":             "运输中",
 				"estimated_delivery": time.Now().Add(24 * time.Hour).Format("2006-01-02"),
 				"tracking_info": []map[string]string{
 					{
@@ -237,4 +237,3 @@ func RegisterBuiltinTools(registry *Registry, logger *zap.Logger) error {
 	logger.Info("内置工具注册完成", zap.Int("count", len(tools)))
 	return nil
 }
-

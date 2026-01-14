@@ -19,8 +19,8 @@ type EmbeddingClient struct {
 
 // EmbeddingRequest 请求结构
 type EmbeddingRequest struct {
-	Model string                 `json:"model"`
-	Input EmbeddingInput         `json:"input"`
+	Model      string                 `json:"model"`
+	Input      EmbeddingInput         `json:"input"`
 	Parameters map[string]interface{} `json:"parameters,omitempty"`
 }
 
@@ -183,4 +183,3 @@ func (c *EmbeddingClient) GetQueryEmbedding(query string) ([]float64, error) {
 
 	return embResp.Output.Embeddings[0].Embedding, nil
 }
-

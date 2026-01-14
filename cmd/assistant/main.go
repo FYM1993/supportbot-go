@@ -44,7 +44,7 @@ func main() {
 
 	// 初始化工具注册中心
 	toolRegistry := tools.NewRegistry(zapLogger)
-	
+
 	// 注册内置工具
 	if err := tools.RegisterBuiltinTools(toolRegistry, zapLogger); err != nil {
 		log.Fatalf("注册工具失败: %v", err)
@@ -91,7 +91,7 @@ func main() {
 
 	// 启动服务
 	addr := fmt.Sprintf(":%d", cfg.Server.Port)
-	zapLogger.Info("assistant 服务启动成功", 
+	zapLogger.Info("assistant 服务启动成功",
 		zap.Int("port", cfg.Server.Port),
 		zap.Int("tools", toolRegistry.Count()))
 
@@ -100,9 +100,9 @@ func main() {
 	}
 }
 
-func processRequest(req AssistantRequest, llmClient *client.DashScopeClient, 
+func processRequest(req AssistantRequest, llmClient *client.DashScopeClient,
 	toolRegistry *tools.Registry, imDemoURL string, logger *zap.Logger) {
-	
+
 	logger.Info("开始处理请求（支持工具调用）",
 		zap.String("question", req.Question),
 		zap.String("category", req.Category))
@@ -132,14 +132,14 @@ func processRequest(req AssistantRequest, llmClient *client.DashScopeClient,
 
 	// 获取工具定义
 	toolDefs := toolRegistry.GetFunctionDefs()
-	
+
 	// 调用 LLM（支持工具调用）
 	maxIterations := 5 // 最多迭代 5 次（防止无限循环）
 	var finalResponse string
-	
+
 	for i := 0; i < maxIterations; i++ {
 		logger.Info("LLM 调用", zap.Int("iteration", i+1))
-		
+
 		resp, err := llmClient.ChatWithTools(messages, toolDefs)
 		if err != nil {
 			logger.Error("LLM 调用失败", zap.Error(err))
@@ -151,18 +151,18 @@ func processRequest(req AssistantRequest, llmClient *client.DashScopeClient,
 		if len(resp.Output.Choices) > 0 && len(resp.Output.Choices[0].Message.ToolCalls) > 0 {
 			// LLM 要求调用工具
 			assistantMsg := resp.Output.Choices[0].Message
-			logger.Info("LLM 请求调用工具", 
+			logger.Info("LLM 请求调用工具",
 				zap.Int("toolCount", len(assistantMsg.ToolCalls)))
-			
+
 			// 将 assistant 消息加入对话历史
 			messages = append(messages, assistantMsg)
-			
+
 			// 执行所有工具调用
 			for _, toolCall := range assistantMsg.ToolCalls {
-				logger.Info("执行工具", 
+				logger.Info("执行工具",
 					zap.String("tool", toolCall.Function.Name),
 					zap.String("args", toolCall.Function.Arguments))
-				
+
 				// 转换为工具系统的格式
 				tc := tools.ToolCall{
 					ID:   toolCall.ID,
@@ -172,21 +172,21 @@ func processRequest(req AssistantRequest, llmClient *client.DashScopeClient,
 						Arguments: toolCall.Function.Arguments,
 					},
 				}
-				
+
 				// 执行工具
 				result, err := toolRegistry.Execute(tc)
 				if err != nil {
-					logger.Error("工具执行失败", 
+					logger.Error("工具执行失败",
 						zap.String("tool", toolCall.Function.Name),
 						zap.Error(err))
 					result = map[string]interface{}{
 						"error": err.Error(),
 					}
 				}
-				
+
 				// 将工具结果序列化为 JSON
 				resultJSON, _ := json.Marshal(result)
-				
+
 				// 将工具结果加入对话历史
 				messages = append(messages, client.Message{
 					Role:       "tool",
@@ -194,11 +194,11 @@ func processRequest(req AssistantRequest, llmClient *client.DashScopeClient,
 					ToolCallID: toolCall.ID,
 				})
 			}
-			
+
 			// 继续下一轮，让 LLM 基于工具结果生成回答
 			continue
 		}
-		
+
 		// 没有工具调用，获取最终回答
 		if resp.Output.Text != "" {
 			finalResponse = resp.Output.Text
@@ -207,7 +207,7 @@ func processRequest(req AssistantRequest, llmClient *client.DashScopeClient,
 		} else {
 			finalResponse = "抱歉，没有获取到回答。"
 		}
-		
+
 		logger.Info("获得最终回答", zap.String("response", finalResponse))
 		break
 	}
@@ -233,4 +233,3 @@ func sendToIM(userID int64, content string, imDemoURL string, logger *zap.Logger
 
 	logger.Info("回复已发送", zap.Int64("userId", userID))
 }
-

@@ -30,10 +30,10 @@ func NewDashScopeClient(apiKey, model string, logger *zap.Logger) *DashScopeClie
 
 // Message 消息
 type Message struct {
-	Role       string      `json:"role"`                 // system, user, assistant, tool
-	Content    string      `json:"content,omitempty"`    // 文本内容
-	ToolCalls  []ToolCall  `json:"tool_calls,omitempty"` // 工具调用（assistant 角色）
-	ToolCallID string      `json:"tool_call_id,omitempty"` // 工具调用ID（tool 角色）
+	Role       string     `json:"role"`                   // system, user, assistant, tool
+	Content    string     `json:"content,omitempty"`      // 文本内容
+	ToolCalls  []ToolCall `json:"tool_calls,omitempty"`   // 工具调用（assistant 角色）
+	ToolCallID string     `json:"tool_call_id,omitempty"` // 工具调用ID（tool 角色）
 }
 
 // ToolCall 工具调用
@@ -51,8 +51,8 @@ type Function struct {
 
 // ChatRequest 聊天请求
 type ChatRequest struct {
-	Model      string    `json:"model"`
-	Input      Input     `json:"input"`
+	Model      string     `json:"model"`
+	Input      Input      `json:"input"`
 	Parameters Parameters `json:"parameters,omitempty"`
 }
 
@@ -66,16 +66,16 @@ type Parameters struct {
 	Temperature float64                  `json:"temperature,omitempty"`
 	TopP        float64                  `json:"top_p,omitempty"`
 	MaxTokens   int                      `json:"max_tokens,omitempty"`
-	Tools       []map[string]interface{} `json:"tools,omitempty"` // Function Calling 工具定义
+	Tools       []map[string]interface{} `json:"tools,omitempty"`       // Function Calling 工具定义
 	ToolChoice  string                   `json:"tool_choice,omitempty"` // "auto", "none"
 }
 
 // ChatResponse 聊天响应
 type ChatResponse struct {
 	Output struct {
-		Text         string     `json:"text"`
-		FinishReason string     `json:"finish_reason"`
-		Choices      []Choice   `json:"choices,omitempty"` // Function Calling 模式下的响应
+		Text         string   `json:"text"`
+		FinishReason string   `json:"finish_reason"`
+		Choices      []Choice `json:"choices,omitempty"` // Function Calling 模式下的响应
 	} `json:"output"`
 	Usage struct {
 		InputTokens  int `json:"input_tokens"`
@@ -206,4 +206,3 @@ func (c *DashScopeClient) ChatWithTools(messages []Message, tools []map[string]i
 
 	return &chatResp, nil
 }
-

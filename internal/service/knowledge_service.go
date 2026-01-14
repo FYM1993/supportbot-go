@@ -192,8 +192,8 @@ func (s *KnowledgeService) InitDefaultKnowledge() error {
 			ID:      "promotion-double11",
 			Content: "双11大促活动：11月1日-11日全场5折起，每日10点、20点整点秒杀。前1000名下单用户赠送50元无门槛券。购物满500元抽奖，最高可得iPhone 15。活动商品不支持退换货。",
 			Metadata: map[string]string{
-				"category": "促销活动",
-				"source":   "活动页面",
+				"category":   "促销活动",
+				"source":     "活动页面",
 				"valid_date": "2024-11-01 至 2024-11-11",
 			},
 		},
@@ -201,4 +201,3 @@ func (s *KnowledgeService) InitDefaultKnowledge() error {
 
 	return s.AddKnowledgeBatch(knowledgeBase)
 }
-
