@@ -178,4 +178,3 @@ func (s *SessionService) heartbeatChecker() {
 		s.mu.Unlock()
 	}
 }
-

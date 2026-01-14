@@ -64,4 +64,3 @@ func (s *ChatService) callQuestionClassifier(userID int64, question string) erro
 	s.logger.Info("问题分类服务调用成功", zap.Int64("userId", userID))
 	return nil
 }
-

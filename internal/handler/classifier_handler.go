@@ -52,4 +52,3 @@ func (h *ClassifierHandler) Classify(c *gin.Context) {
 
 	c.JSON(200, result)
 }
-
