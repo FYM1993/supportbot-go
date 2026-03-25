@@ -15,11 +15,11 @@ import (
 
 // ClassifierService 问题分类服务
 type ClassifierService struct {
-	llmClient   *client.DashScopeClient
-	redisClient *redis.Client
-	httpClient  *http.Client
-	agentURLs   map[string]string // category -> agent URL
-	logger      *zap.Logger
+	llmClient    *client.DashScopeClient
+	redisClient  *redis.Client
+	httpClient   *http.Client
+	agentURLs    map[string]string // category -> agent URL
+	logger       *zap.Logger
 	systemPrompt string
 	categories   map[string]CategoryInfo
 }
@@ -78,7 +78,7 @@ func (s *ClassifierService) ClassifyAndRoute(userID int64, question string) (*mo
 
 	// 4. 解析分类结果
 	category := s.parseCategory(response)
-	
+
 	result := &model.ClassifyResponse{
 		Category:    category,
 		Confidence:  0.9,
@@ -101,7 +101,7 @@ func (s *ClassifierService) ClassifyAndRoute(userID int64, question string) (*mo
 // buildClassifyPrompt 构建分类提示词
 func (s *ClassifierService) buildClassifyPrompt(question string, history []string) string {
 	prompt := "请根据以下问题进行分类：\n\n"
-	
+
 	if len(history) > 0 {
 		prompt += "对话历史：\n"
 		for _, h := range history {
@@ -109,13 +109,13 @@ func (s *ClassifierService) buildClassifyPrompt(question string, history []strin
 		}
 		prompt += "\n"
 	}
-	
+
 	prompt += "用户问题：" + question + "\n\n"
 	prompt += "可选分类：\n"
 	for category, info := range s.categories {
 		prompt += fmt.Sprintf("- %s: %s\n", category, info.Description)
 	}
-	
+
 	prompt += "\n请直接返回分类名称，只返回一个词。"
 	return prompt
 }
@@ -175,7 +175,6 @@ func (s *ClassifierService) saveHistory(ctx context.Context, userID int64, messa
 
 // 辅助函数
 func contains(str, substr string) bool {
-	return len(str) >= len(substr) && (str == substr || 
+	return len(str) >= len(substr) && (str == substr ||
 		len(str) > len(substr) && (str[:len(substr)] == substr || str[len(str)-len(substr):] == substr))
 }
-

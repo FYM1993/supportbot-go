@@ -47,6 +47,12 @@
         回到 im-demo 推送
 ```
 
+## 📚 文档导航
+
+- 📖 [快速开始指南](./docs/QUICKSTART.md) - 详细的环境搭建和启动步骤
+- 🔧 [RAG与工具调用文档](./docs/RAG_MCP_README.md) - RAG知识库检索和Function Calling详解
+- 📁 [完整文档目录](./docs/README.md) - 所有文档的索引
+
 ## 🚀 快速开始
 
 ### 环境要求
@@ -234,7 +240,4 @@ MIT
 
 ---
 
-**祝你面试顺利！🎉**
-
-如有问题，请提 Issue 或联系作者。
 
